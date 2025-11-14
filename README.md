@@ -164,10 +164,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ## 👥 Autores
 
-- **Kevin**
-- **Mauro**
-- **Gustavo**
-- **Gerardo**
+- **Kevin** - *Desarrollador Principal* - [@tu-usuario](#)
 
 ## 🙏 Agradecimientos
 
@@ -175,7 +172,15 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 - Comunidad de desarrolladores web
 - Recursos educativos de métodos numéricos
 
+## 📞 Contacto
 
+¿Tienes preguntas o sugerencias?
+
+- 📧 Email: [tu-email@example.com](#)
+- 💼 LinkedIn: [Tu perfil](#)
+- 🐱 GitHub: [@tu-usuario](#)
+
+---
 
 ### 📊 Estadísticas del Proyecto
 
@@ -187,4 +192,4 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 **⭐ Si te gusta este proyecto, ¡dale una estrella!**
 
-
+*Hecho con ❤️ para la educación en métodos numéricos*
