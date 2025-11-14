@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas De Ecuaciones Jacobi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!--Encabezado-->
+    <div class="encabezado">
+        <h3>Métodos Numéricos</h3>
+        <section class="navegacion">
+            <nav>   
+                <a href="#">Inicio</a>
+                <a href="#">¿Que es Jacobi?</a>
+                <a href="#">Calculadora</a>
+            </nav>
+        </section>
+    </div>
+    <div class="contenedor">
+        <!--Boton flotante calculadora-->
+        
+        <div class="contenedor-principal">
+            <video autoplay loop muted disablePictureInPicture class="video-fondo">
+                <source src="/fondos/117606-712421887_small.mp4" type="video/webm">
+                Tu navegador no soporta el video.
+            </video>
+            <!--Contenedor Principal-->
+            <div class="titulo"> 
+                    <h1>Métodos Númericos <br>Sistemas De Ecuaciones Jacobi</h1>
+                    <div class="botones">
+                        <button class="btn-primario">Empezar Ahora</button>
+                        <button class="btn-secundario">Ver Ejemplo</button>
+                    </div>
+            </div>
+        </div>
+
+            <!--Contenedor Secundario--> 
+        <div class="contenedor-secundario">
+                <h2>¿Qué es el Método de Jacobi?</h2>
+                <div class="contenido">
+                <div class="texto">
+                <p>En metodos numéricos el método de Jacobi es un método iterativo, usado para resolver sistemas de ecuaciones lineales del tipo <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>A</mi>
+  <mi>x</mi>
+  <mo>=</mo>
+  <mi>b</mi>
+</math>, donde <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math> es una matriz cuadrada de coeficientes, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math> es el vector columna de las incógnitas y <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math> es el vector columna de términos independientes.
+ El algoritmo toma su nombre del matemático alemán Carl Gustav Jakob Jacobi. El método de Jacobi consiste en usar fórmulas como iteración de punto fijo.</p>
+ </div>
+ <div class="imagen">
+ <img src="/elementos/elemento.jpg" alt="Método de Jacobi">
+ </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor sobre el algoritmo de Jacobi -->
+    <div class="contenedor-algoritmo">
+        <h2>Algoritmo del Método de Jacobi</h2>
+        <div class="contenido-algoritmo">
+            <div class="pasos">
+                <h3>Pasos del Algoritmo:</h3>
+                <ol>
+                    <li><strong>Verificar convergencia:</strong> La matriz A debe ser diagonalmente dominante</li>
+                    <li><strong>Despejar variables:</strong> De cada ecuación despejamos una variable diferente</li>
+                    <li><strong>Valores iniciales:</strong> Establecer valores iniciales para las variables</li>
+                    <li><strong>Iteración:</strong> Aplicar las fórmulas iterativas hasta convergencia</li>
+                    <li><strong>Criterio de parada:</strong> |x<sub>i</sub><sup>(k+1)</sup> - x<sub>i</sub><sup>(k)</sup>| < ε</li>
+                </ol>
+            </div>
+            <div class="formula-jacobi">
+                <h3>Fórmula General:</h3>
+                <div class="ecuacion">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msup>
+                            <mi>x</mi>
+                            <mrow><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow>
+                        </msup>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow>
+                                <msub><mi>b</mi><mi>i</mi></msub>
+                                <mo>-</mo>
+                                <msubsup>
+                                    <mo>∑</mo>
+                                    <mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>j</mi><mo>≠</mo><mi>i</mi></mrow>
+                                    <mi>n</mi>
+                                </msubsup>
+                                <msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mi>j</mi>
+                                    <mrow><mo>(</mo><mi>k</mi><mo>)</mo></mrow>
+                                </msubsup>
+                            </mrow>
+                            <msub><mi>a</mi><mrow><mi>i</mi><mi>i</mi></mrow></msub>
+                        </mfrac>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor de ventajas y desventajas -->
+    <div class="contenedor-ventajas">
+        <h2>Ventajas y Desventajas del Método de Jacobi</h2>
+        <div class="ventajas-desventajas">
+            <div class="ventajas" >
+            <h3>✔ Ventajas</h3>
+                <ul>
+                    <li>Fácil de implementar y entender</li>
+                    <li>Paralelizable para sistemas grandes</li>
+                    <li>Requiere poca memoria adicional</li>
+                    <li>Estable numéricamente</li>
+                    <li>No modifica la matriz original</li>
+                    <li>Es muy eficiente para matrices dispersas</li>
+                </ul>
+            </div>
+            <div class="desventajas">
+                <h3>❌ Desventajas</h3>
+                <ul>
+                    <li>Convergencia lenta comparado con Gauss-Seidel</li>
+                    <li>Requiere que la matriz sea diagonalmente dominante</li>
+                    <li>No siempre converge</li>
+                    <li>Necesita muchas iteraciones para alta precisión</li>
+                    <li>Sensible a la elección de valores iniciales</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor de ejemplo práctico -->
+    <div class="contenedor-ejemplo">
+        <h2>Ejemplo Práctico del Método de Jacobi</h2>
+        <div class="ejemplo-contenido">
+            <div class="sistema-ecuaciones">
+                <h3>Sistema de Ecuaciones:</h3>
+                <div class="ecuaciones">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mrow>
+                            <mn>4</mn><msub><mi>x</mi><mn>1</mn></msub>
+                            <mo>+</mo>
+                            <msub><mi>x</mi><mn>2</mn></msub>
+                            <mo>+</mo>
+                            <msub><mi>x</mi><mn>3</mn></msub>
+                            <mo>=</mo>
+                            <mn>7</mn>
+                        </mrow>
+                    </math>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mrow>
+                            <msub><mi>x</mi><mn>1</mn></msub>
+                            <mo>+</mo>
+                            <mn>5</mn><msub><mi>x</mi><mn>2</mn></msub>
+                            <mo>+</mo>
+                            <mn>2</mn><msub><mi>x</mi><mn>3</mn></msub>
+                            <mo>=</mo>
+                            <mn>8</mn>
+                        </mrow>
+                    </math>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mrow>
+                            <mn>2</mn><msub><mi>x</mi><mn>1</mn></msub>
+                            <mo>+</mo>
+                            <mn>3</mn><msub><mi>x</mi><mn>2</mn></msub>
+                            <mo>+</mo>
+                            <mn>8</mn><msub><mi>x</mi><mn>3</mn></msub>
+                            <mo>=</mo>
+                            <mn>10</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+            <div class="iteraciones">
+                <h3>Primeras Iteraciones:</h3>
+                <div class="tabla-iteraciones">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Iteración</th>
+                                <th>x₁</th>
+                                <th>x₂</th>
+                                <th>x₃</th>
+                                <th>Error</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>0.0000</td>
+                                <td>0.0000</td>
+                                <td>0.0000</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1.7500</td>
+                                <td>1.6000</td>
+                                <td>1.2500</td>
+                                <td>2.3452</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>1.0125</td>
+                                <td>0.8500</td>
+                                <td>0.8125</td>
+                                <td>0.9822</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>1.2906</td>
+                                <td>1.1200</td>
+                                <td>0.9844</td>
+                                <td>0.3916</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor de la calculadora -->
+    <div class="contenedor-calculadora" id="calculadora">
+        <h2>Calculadora del Método de Jacobi</h2>
+        <div class="calculadora-contenido">
+            <div class="input-sistema">
+                <h3>Ingrese el Sistema de Ecuaciones 3x3</h3>
+                <div class="dimension-selector" style="display: none;">
+                    <label for="dimension">Dimensión del sistema:</label>
+                    <select id="dimension" onchange="crearMatriz()">
+                        <option value="3" selected>3x3</option>
+                    </select>
+                </div>
+                <div id="matriz-container">
+                    <!-- Aquí se generará dinámicamente la matriz -->
+                </div>
+                <div class="parametros">
+                    <div class="parametro">
+                        <label for="tolerancia">Tolerancia:</label>
+                        <input type="number" id="tolerancia" value="0.0001" step="0.0001" min="0.0001">
+                    </div>
+                    <div class="parametro">
+                        <label for="iteraciones-max">Iteraciones máximas:</label>
+                        <input type="number" id="iteraciones-max" value="100" min="1">
+                    </div>
+                </div>
+                <button class="btn-calcular" onclick="resolverJacobi()">Resolver Sistema</button>
+            </div>
+            <div class="resultados">
+                <h3>Resultados</h3>
+                <div id="resultados-container">
+                    <p>Ingrese un sistema de ecuaciones para ver los resultados.</p>
+                </div>
+                <div id="iteraciones-detalle" style="display: none;">
+                    <h4>Detalle de Iteraciones:</h4>
+                    <div id="tabla-iteraciones"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
