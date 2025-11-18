@@ -768,8 +768,129 @@ function mostrarTablaIteraciones(variables = null) {
                  </p>`;
     }
     
+    // *** CAMBIO: Agregar botón de descarga Excel ***
+    html += `
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="descargarExcel()" style="
+                padding: 12px 30px;
+                background: linear-gradient(45deg, #4CAF50, #45a049);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 1.1rem;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(76, 175, 80, 0.5)';" 
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(76, 175, 80, 0.3)';">
+                Descargar Tabla
+            </button>
+        </div>
+    `;
+
     tablaContainer.innerHTML = html;
     detalleContainer.style.display = 'block';
+}
+
+// *** NUEVA FUNCIÓN: Descargar tabla como Excel ***
+function descargarExcel() {
+    try {
+        // Verificar que SheetJS esté cargado
+        if (typeof XLSX === 'undefined') {
+            alert('Error: La biblioteca SheetJS no está cargada. Por favor, recargue la página.');
+            return;
+        }
+        
+        if (iteracionesGlobales.length === 0) {
+            alert('No hay datos de iteraciones para exportar.');
+            return;
+        }
+        
+        // Obtener variables (x, y, z por defecto)
+        const variables = ['x', 'y', 'z'];
+        
+        // Crear datos para Excel
+        const datosExcel = [];
+        
+        // Agregar encabezados
+        const encabezados = ['Iteración', ...variables];
+        datosExcel.push(encabezados);
+        
+        // Agregar fila inicial (iteración 0)
+        datosExcel.push([0, 0.0000, 0.0000, 0.0000]);
+        
+        // Agregar todas las iteraciones
+        iteracionesGlobales.forEach(iter => {
+            const fila = [iter.iteracion];
+            iter.x.forEach(valor => {
+                fila.push(parseFloat(valor.toFixed(4)));
+            });
+            datosExcel.push(fila);
+        });
+        
+        // Crear libro de trabajo (workbook)
+        const wb = XLSX.utils.book_new();
+        
+        // Crear hoja de trabajo (worksheet) desde los datos
+        const ws = XLSX.utils.aoa_to_sheet(datosExcel);
+        
+        // Configurar ancho de columnas
+        ws['!cols'] = [
+            { wch: 12 },  // Iteración
+            { wch: 12 },  // x
+            { wch: 12 },  // y
+            { wch: 12 }   // z
+        ];
+        
+        // Agregar la hoja al libro
+        XLSX.utils.book_append_sheet(wb, ws, 'Iteraciones Jacobi');
+        
+        // Generar nombre de archivo con fecha y hora
+        const fecha = new Date();
+        const nombreArchivo = `jacobi_iteraciones_${fecha.getFullYear()}${(fecha.getMonth()+1).toString().padStart(2,'0')}${fecha.getDate().toString().padStart(2,'0')}_${fecha.getHours()}${fecha.getMinutes()}${fecha.getSeconds()}.xlsx`;
+        
+        // Descargar el archivo
+        XLSX.writeFile(wb, nombreArchivo);
+        
+        // Mostrar mensaje de éxito
+        mostrarMensajeExito('✅ Archivo Excel descargado correctamente');
+        
+        console.log('Archivo Excel generado:', nombreArchivo);
+        console.log('Total de filas exportadas:', datosExcel.length - 1); // -1 por los encabezados
+        
+    } catch (error) {
+        console.error('Error al generar archivo Excel:', error);
+        alert('Error al generar el archivo Excel: ' + error.message);
+    }
+}
+
+// Función auxiliar para mostrar mensajes de éxito
+function mostrarMensajeExito(mensaje) {
+    const mensajeDiv = document.createElement('div');
+    mensajeDiv.style.position = 'fixed';
+    mensajeDiv.style.top = '50%';
+    mensajeDiv.style.left = '50%';
+    mensajeDiv.style.transform = 'translate(-50%, -50%)';
+    mensajeDiv.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+    mensajeDiv.style.color = 'white';
+    mensajeDiv.style.padding = '20px 30px';
+    mensajeDiv.style.borderRadius = '10px';
+    mensajeDiv.style.fontSize = '1.2rem';
+    mensajeDiv.style.fontWeight = 'bold';
+    mensajeDiv.style.zIndex = '10000';
+    mensajeDiv.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+    mensajeDiv.innerHTML = mensaje;
+    
+    document.body.appendChild(mensajeDiv);
+    
+    setTimeout(() => {
+        mensajeDiv.style.opacity = '0';
+        mensajeDiv.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+            document.body.removeChild(mensajeDiv);
+        }, 500);
+    }, 2000);
 }
 
 // Navegación suave

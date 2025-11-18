@@ -872,7 +872,7 @@ h3{
 .contenedor-equipo {
     width: 100%;
     min-height: 500px;
-    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(/fondos/fondo1.jpg);
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(./fondos/fondo3.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
