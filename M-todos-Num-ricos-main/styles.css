@@ -1,0 +1,1949 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --color-fondo: #1a1a1a;
+    --color-texto: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0; 
+    overflow-x: hidden;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+
+
+.encabezado{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background: #000;
+    box-shadow: 0 2px 1px -2px #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.encabezado h3{
+    color: var(--color-texto);
+    text-align: left;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+nav{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: transparent;
+    padding: 0 20px;
+}
+
+nav a{
+    padding: 5px 10px;
+    text-decoration: none;
+    color: var(--color-texto);
+}
+
+nav a:hover{
+    color: #FFDA61;
+    transition: 0.3s;
+    transform: TranslateY(-2px);
+    scale: 1.1;
+}
+
+.video-fondo {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: blur(2px) brightness(0.8);
+    border: none;
+    pointer-events: none;
+    transform: scale(1.6);
+}
+
+
+.titulo {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+.contenedor-principal {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.botones{
+    z-index: 1001;
+    padding-top: 20px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: #FFDA61;
+    background-image: linear-gradient(45deg, #FFDA61 , #FFCB05 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    line-height: 1.3;
+}
+
+.botones {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding-top: 50px;
+    
+}
+
+.botones button {
+    flex: 1;
+}
+
+.btn-primario {
+    background: linear-gradient(45deg, #FFDA61, #FFCB05);
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 218, 97, 0.3);
+}
+
+.btn-primario:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 218, 97, 0.5);
+    background: linear-gradient(45deg, #FFCB05, #FFDA61);
+}
+
+.btn-secundario {
+    background: transparent;
+    color: #FFDA61;
+    border: 2px solid #FFDA61;
+    padding: 13px 28px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secundario:hover {
+    background: #FFDA61;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 218, 97, 0.3);
+}
+
+.contenedor-secundario {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/fondos/fondo2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 10px;
+    margin: 0;
+    min-height: 110vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 500;
+}
+
+.contenido {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.texto {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding: 25px;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    border-radius: 15px;
+    transform: translateY(50%);
+}   
+
+.imagen {
+    margin-left: auto;
+    padding-right: 10px;
+}
+
+.imagen img {
+    width: 480px;
+    height: auto;
+    border-radius: 20px;
+    flex-shrink: 0;
+    transform: translateY(50%);
+}
+
+/* MEDIA QUERIES PARA RESPONSIVE */
+/* ============================================= */
+/* MEDIA QUERIES PARA CONTENEDOR-SECUNDARIO */
+/* ============================================= */
+
+/* TABLET (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .contenedor-secundario {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1.1rem;
+        padding: 25px;
+        transform: none;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 450px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL GRANDE Y TABLET PEQUEÑA (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .contenedor-secundario {
+        min-height: auto;
+        padding: 30px 15px;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1.1rem;
+        padding: 20px;
+        transform: none;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 380px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .contenedor-secundario {
+        padding: 20px 10px;
+        min-height: auto;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 15px;
+        gap: 15px;
+        transform: none;
+        flex-direction: column;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 15px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL EXTRA PEQUEÑO (hasta 375px) */
+@media screen and (max-width: 375px) {
+    .contenedor-secundario {
+        padding: 15px 8px;
+    }
+    
+    .texto {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+    
+    .imagen img {
+        max-width: 280px;
+    }
+}
+
+/* ============================================= */
+/* ASEGURAR QUE EL ORDEN SEA CORRECTO */
+/* ============================================= */
+
+@media screen and (max-width: 1024px) {
+    .contenido {
+        /* La imagen aparecerá primero, luego el texto */
+        flex-direction: column;
+    }
+    
+    .texto {
+        /* Resetear el transform que tenía en desktop */
+        transform: none !important;
+        order: 2; /* Texto aparece segundo */
+    }
+    
+    .imagen {
+        /* Resetear el transform que tenía en desktop */
+        transform: none !important;
+        order: 1; /* Imagen aparece primero */
+    }
+    
+    .imagen img {
+        /* Resetear el transform de la imagen */
+        transform: none !important;
+    }
+}
+
+.contenedor-secundario::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.contenido {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    
+}
+
+
+.texto {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding: 25px;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    border-radius: 15px;
+    transform: translateY(50%);
+    
+}   
+
+
+
+.imagen{
+margin-left: auto;
+padding-right: 10px;
+}
+
+.imagen img {
+    width: 480px;
+    height: auto;
+    border-radius: 20px;
+    flex-shrink: 0;
+    transform: translateY(50%);
+}
+
+h2, h3 {
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 80px;
+    /* Aplicando Gradiente al subtitulo */
+    color: #FFDA61;
+    background-image: linear-gradient(45deg, #FFDA61 , #FFCB05 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+h3{
+    padding-top: 0px;
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        padding: 0 20px;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+        padding-top: 20px;
+    }
+    
+    .titulo {
+        padding: 0 15px;
+    }
+    
+    .contenedor-secundario {
+        padding: 20px 15px;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        transform: translateY(20%);
+    }
+    
+    .texto {
+        width: 90%;
+        font-size: 1.1rem;
+        padding: 10px;
+    }
+    
+    .imagen img {
+        width: 350px;
+        max-width: 100%;
+    }
+    
+    .video-fondo {
+        transform: scale(1.3);
+    }
+}
+
+/* Móviles (320px - 480px) */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+        line-height: 1.1;
+        padding: 0 15px;
+        text-align: center;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        padding-top: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .contenedor-secundario {
+        padding: 15px 10px;
+        min-height: auto;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        transform: translateY(10%);
+    }
+    
+    .texto {
+        width: 95%;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 5px;
+    }
+    
+    .imagen img {
+        width: 280px;
+        max-width: 95%;
+        border-radius: 15px;
+    }
+    
+    .video-fondo {
+        transform: scale(1.2);
+        filter: blur(1px) brightness(0.6);
+    }
+}
+
+
+
+/* Contenedor del algoritmo */
+.contenedor-algoritmo {
+    width: 100%;
+    min-height: 600px;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/fondos/fondo3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    position: relative;
+}
+
+.contenedor-algoritmo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/fondos/fondo3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(2px);
+    z-index: -1;
+}
+
+.contenidor-algoritmo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+
+.contenedor-algoritmo h2 {
+    color: var(--color-texto);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    ;
+}
+
+.contenido-algoritmo {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.pasos {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.pasos h3 {
+    color: var(#ffffff);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.pasos ol {
+    color: var(--color-texto);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    padding-left: 20px;
+}
+
+.pasos li {
+    margin-bottom: 10px;
+}
+
+.formula-jacobi {
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.formula-jacobi h3 {
+    color: var(--color-texto);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.ecuacion {
+    background: rgba(65, 64, 64, 0.66);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    backdrop-filter: blur(10px);
+}
+
+/* Contenedor de ventajas y desventajas */
+.contenedor-ventajas {
+    width: 100%;
+    min-height: 110vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/fondos/fondo4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    position: relative;
+}
+
+.contenedor-ventajas::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/fondos/fondo4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(2px);
+    z-index: -1;
+}
+
+.contenedor-ventajas h2 {
+
+    color: var(--color-texto);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 80px;
+    
+}
+
+.ventajas-desventajas {
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.ventajas, .desventajas {
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    min-height: 400px;
+    padding: 20px;
+}
+
+.ventajas h3, .desventajas h3 {
+    color: var(--color-texto);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.ventajas ul, .desventajas ul {
+    color: var(--color-texto);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    list-style: none;
+    padding: 0;
+}
+
+.ventajas li, .desventajas li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+
+.ventajas li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.desventajas li:before {
+    content: "✗";
+    position: absolute;
+    left: 0;
+    color: #f44336;
+    font-weight: bold;
+}
+
+/* Contenedor del ejemplo */
+.contenedor-ejemplo {
+    width: 100%;
+    min-height: 700px;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/fondos/fondo1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    position: relative;
+}
+
+.contenedor-ejemplo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/fondos/fondo1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(2px);
+    z-index: -1;
+}
+
+.contenedor-ejemplo h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.ejemplo-contenido {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.sistema-ecuaciones {
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 80px;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.sistema-ecuaciones h3 {
+    font-size: 1.7rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+.ecuaciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.iteraciones {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.iteraciones h3 {
+    color: #ffffff;
+    font-size: 1.7rem;
+    text-align: center;
+    margin: 0;
+    padding-top: 0px;
+}
+
+.tabla-iteraciones table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabla-iteraciones th,
+.tabla-iteraciones td {
+    padding: 10px;
+    border: 1px solid #000000;
+    color: #333;
+}
+
+.tabla-iteraciones th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.tabla-iteraciones tr, .tabla-iteraciones td:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Contenedor de la calculadora */
+.contenedor-calculadora {
+    width: 100%;
+    min-height: 800px;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/fondos/fondo3.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.contenedor-calculadora h2 {
+    color: var(--color-texto);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.calculadora-contenido {
+    display: flex;
+    max-width: 1400px;
+    width: 100%;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.input-sistema {
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.input-sistema h3 {
+    color: var(--color-texto);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.dimension-selector {
+    margin-bottom: 20px;
+}
+
+.dimension-selector label {
+    color: var(--color-texto);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.dimension-selector select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    background: white;
+    font-size: 1rem;
+}
+
+#matriz-container {
+    margin: 20px 0;
+    display: block !important;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    min-height: 200px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.matriz-fila {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+}
+
+.ecuacion-input-principal {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: 50px !important;
+    text-align: left !important;
+    border: 2px solid #4CAF50 !important;
+    border-radius: 8px !important;
+    font-size: 1.1rem !important;
+    padding: 15px 18px !important;
+    background: white !important;
+    color: #333 !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+}
+
+.ecuacion-input-principal:focus {
+    outline: none !important;
+    border-color: #2196F3 !important;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.4) !important;
+}
+
+.matriz-input {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.9);
+}
+
+.parametros {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.parametro {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.parametro label {
+    color: var(--color-texto);
+    font-weight: bold;
+}
+
+.parametro input {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-calcular {
+    width: 100%;
+    padding: 15px;
+    background: #2196F3;
+    color: #f5f5f5;
+    border-radius: 6px;
+    border: 2px solid #000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-calcular:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.resultados {
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.resultados h3 {
+    color: var(--color-texto);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#resultados-container {
+    color: var(--color-texto);
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#iteraciones-detalle {
+    color: var(--color-texto);
+}
+
+#tabla-iteraciones {
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Contenedor del equipo */
+.contenedor-equipo {
+    width: 100%;
+    min-height: 500px;
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(./fondos/fondo3.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.contenedor-equipo h2 {
+    color: var(--color-texto);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.equipo-contenido {
+    display: flex;
+    max-width: 800px;
+    width: 100%;
+    gap: 40px;
+    justify-content: center;
+}
+
+.miembro {
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.miembro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.foto-miembro {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    background: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto-miembro img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.miembro h4 {
+    color: var(--color-texto);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.miembro p {
+    color: var(--color-texto);
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+/* Responsive para los nuevos contenedores */
+@media screen and (max-width: 768px) {
+/* CALCULADORA - INPUTS RESPONSIVE */
+    .matriz-fila {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+        gap: 10px;
+    }
+    
+    .matriz-fila span {
+        min-width: auto;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 5px;
+        font-size: 1rem;
+    }
+    
+    .input-sistema,
+    .resultados {
+        width: 100%;
+    }
+    
+    
+    
+    /* ECUACIONES MATEMÁTICAS */
+    .ecuaciones {
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsive para calculadora - Tablets */
+@media screen and (max-width: 1024px) {
+    .calculadora-contenido {
+        flex-direction: column;
+    }
+    
+    .input-sistema,
+    .resultados {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .matriz-fila {
+        padding: 10px 5px;
+        gap: 10px;
+    }
+    
+    .ecuacion-input-principal {
+        font-size: 1rem !important;
+        padding: 12px 15px !important;
+    }
+}
+
+/* Responsive para calculadora - Móviles grandes */
+@media screen and (max-width: 768px) {
+    #matriz-container {
+        padding: 15px 10px;
+    }
+    
+    .matriz-fila {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .matriz-fila span {
+        min-width: auto;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+    
+    .ecuacion-input-principal {
+        width: 100% !important;
+        font-size: 0.95rem !important;
+        padding: 10px 12px !important;
+        height: auto !important;
+        min-height: 45px;
+    }
+    
+    .contenedor-calculadora h2 {
+        font-size: 2rem;
+        padding: 0 10px;
+    }
+}
+
+/* Responsive para calculadora - Móviles pequeños */
+@media screen and (max-width: 480px) {
+    /* CALCULADORA - AJUSTES ADICIONALES */
+    .contenedor-calculadora h2 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+    
+    .matriz-fila {
+        padding: 10px;
+        margin-bottom: 12px;
+    }
+    
+    .matriz-fila span {
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+    
+    #matriz-container {
+        padding: 12px 8px;
+    }
+    
+    .ecuacion-input-principal {
+        height: auto !important;
+        min-height: 45px !important;
+        line-height: 1.4;
+    }
+    
+    /* PARÁMETROS EN COLUMNA */
+    .parametro {
+        width: 100%;
+    }
+    
+    .parametro input {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .btn-calcular {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    
+    /* AJUSTE DE LISTAS */
+    .pasos ol,
+    .ventajas ul,
+    .desventajas ul {
+        font-size: 0.95rem;
+        padding-left: 15px;
+    }
+}
+
+/* Responsive para móviles muy pequeños */
+@media screen and (max-width: 360px) {
+    .ecuacion-input-principal {
+        font-size: 0.85rem !important;
+        padding: 8px !important;
+    }
+    
+    .matriz-fila span {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* ============================================= */
+/* === MEDIA QUERIES ADICIONALES ESPECÍFICAS == */
+/* ============================================= */
+
+/* TABLET LANDSCAPE (1024px - 1200px) */
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+    .calculadora-contenido {
+        max-width: 95%;
+    }
+    
+    .ecuacion-input-principal {
+        font-size: 1rem !important;
+    }
+}
+
+/* MÓVIL MEDIO (481px - 640px) */
+@media screen and (min-width: 481px) and (max-width: 640px) {
+    .ecuacion-input-principal {
+        font-size: 1rem !important;
+        padding: 12px 15px !important;
+    }
+    
+    .matriz-fila span {
+        font-size: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.7rem;
+    }
+}
+
+/* MÓVIL EXTRA PEQUEÑO - AJUSTES CALCULADORA */
+@media screen and (max-width: 375px) {
+    .ecuacion-input-principal {
+        font-size: 0.85rem !important;
+        padding: 8px 10px !important;
+        height: auto !important;
+        min-height: 40px !important;
+    }
+    
+    .matriz-fila span {
+        font-size: 0.85rem;
+    }
+    
+    #matriz-container {
+        padding: 10px 5px;
+    }
+    
+    .btn-calcular {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+}
+
+/* AJUSTE ESPECÍFICO PARA SECCIÓN ALGORITMO */
+@media screen and (max-width: 1100px) {
+    .contenido-algoritmo {
+        flex-direction: column !important;
+        align-items: center;
+    }
+    
+    .pasos,
+    .formula-jacobi {
+        width: 100%;
+        max-width: 800px;
+    }
+}
+
+/* AJUSTES PARA OVERFLOW HORIZONTAL */
+@media screen and (max-width: 768px) {
+    body, html {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    
+    .matriz-fila,
+    .ecuacion-input-principal,
+    #matriz-container,
+    .input-sistema,
+    .resultados {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* ASEGURAR QUE NADA SE DESBORDE */
+    * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* EXCEPCIONES PARA ELEMENTOS QUE NECESITAN FLEX */
+    .encabezado,
+    .contenedor-principal,
+    .titulo,
+    .contenido {
+        max-width: 100vw;
+    }
+}
+
+/* LANDSCAPE MÓVIL - CALCULADORA */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .contenedor-calculadora {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .calculadora-contenido {
+        flex-direction: row;
+        gap: 20px;
+    }
+    
+    .ecuacion-input-principal {
+        height: 45px !important;
+    }
+}
+
+/* FIX PARA SCROLL HORIZONTAL */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* TABLET (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    /* AGREGAR ESTO: */
+    .contenido-algoritmo {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .pasos,
+    .formula-jacobi {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .ventajas-desventajas,
+    .ejemplo-contenido {
+        gap: 30px;
+    }
+    
+    .calculadora-contenido {
+        flex-direction: column;
+    }
+}
+
+/* ============================================= */
+/* MEDIA QUERIES PARA CONTENEDOR-SECUNDARIO */
+/* ============================================= */
+
+/* TABLET (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .contenedor-secundario {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1.1rem;
+        padding: 25px;
+        transform: none;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 450px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL GRANDE Y TABLET PEQUEÑA (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .contenedor-secundario {
+        min-height: auto;
+        padding: 30px 15px;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1.1rem;
+        padding: 20px;
+        transform: none;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 380px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .contenedor-secundario {
+        padding: 20px 10px;
+        min-height: auto;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 15px;
+        gap: 15px;
+        transform: none;
+        flex-direction: column;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 15px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL EXTRA PEQUEÑO (hasta 375px) */
+@media screen and (max-width: 375px) {
+    .contenedor-secundario {
+        padding: 15px 8px;
+    }
+    
+    .texto {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+    
+    .imagen img {
+        max-width: 280px;
+    }
+}
+
+/* ============================================= */
+/* ASEGURAR QUE EL ORDEN SEA CORRECTO */
+/* ============================================= */
+
+@media screen and (max-width: 1024px) {
+    .contenido {
+        /* La imagen aparecerá primero, luego el texto */
+        flex-direction: column;
+    }
+    
+    .texto {
+        /* Resetear el transform que tenía en desktop */
+        transform: none !important;
+        order: 2; /* Texto aparece segundo */
+    }
+    
+    .imagen {
+        /* Resetear el transform que tenía en desktop */
+        transform: none !important;
+        order: 1; /* Imagen aparece primero */
+    }
+    
+    .imagen img {
+        /* Resetear el transform de la imagen */
+        transform: none !important;
+    }
+}
+
+/* ============================================= */
+/* MEDIA QUERIES PARA CONTENEDOR-VENTAJAS */
+/* ============================================= */
+
+/* TABLET (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .contenedor-ventajas {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .ventajas-desventajas {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .ventajas, .desventajas {
+        width: 100%;
+        max-width: 600px;
+        min-height: auto;
+        padding: 25px;
+    }
+}
+
+/* MÓVIL GRANDE Y TABLET PEQUEÑA (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .contenedor-ventajas {
+        min-height: auto;
+        padding: 30px 15px;
+    }
+    
+    .contenedor-ventajas h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .ventajas-desventajas {
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+    }
+    
+    .ventajas, .desventajas {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+    
+    .ventajas h3, .desventajas h3 {
+        font-size: 1.3rem;
+    }
+    
+    .ventajas ul, .desventajas ul {
+        font-size: 1rem;
+    }
+}
+
+/* MÓVIL (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .contenedor-ventajas {
+        padding: 20px 10px;
+        min-height: auto;
+    }
+    
+    .contenedor-ventajas h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        padding-top: 40px;
+    }
+    
+    .ventajas-desventajas {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .ventajas, .desventajas {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 18px;
+    }
+    
+    .ventajas h3, .desventajas h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .ventajas ul, .desventajas ul {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .ventajas li, .desventajas li {
+        margin-bottom: 8px;
+        padding-left: 18px;
+    }
+}
+
+/* MÓVIL EXTRA PEQUEÑO (hasta 375px) */
+@media screen and (max-width: 375px) {
+    .contenedor-ventajas {
+        padding: 15px 8px;
+    }
+    
+    .contenedor-ventajas h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
+    .ventajas, .desventajas {
+        padding: 15px;
+    }
+    
+    .ventajas h3, .desventajas h3 {
+        font-size: 1.1rem;
+    }
+    
+    .ventajas ul, .desventajas ul {
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================= */
+/* MEDIA QUERIES PARA CONTENEDOR-EJEMPLO */
+/* ============================================= */
+
+/* TABLET (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .contenedor-ejemplo {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .ejemplo-contenido {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .sistema-ecuaciones,
+    .iteraciones {
+        width: 100%;
+        max-width: 700px;
+        min-height: auto;
+        padding: 25px;
+    }
+    
+    .sistema-ecuaciones {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    
+    .sistema-ecuaciones h3,
+    .iteraciones h3 {
+        font-size: 1.5rem;
+        padding-bottom: 20px;
+    }
+}
+
+/* MÓVIL GRANDE Y TABLET PEQUEÑA (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .contenedor-ejemplo {
+        min-height: auto;
+        padding: 30px 15px;
+    }
+    
+    .contenedor-ejemplo h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .ejemplo-contenido {
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+    }
+    
+    .sistema-ecuaciones,
+    .iteraciones {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+    
+    .sistema-ecuaciones {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .sistema-ecuaciones h3,
+    .iteraciones h3 {
+        font-size: 1.4rem;
+        padding-bottom: 25px;
+    }
+    
+    .ecuaciones {
+        font-size: 1.3rem;
+    }
+    
+    .tabla-iteraciones {
+        overflow-x: auto;
+    }
+    
+    .tabla-iteraciones table {
+        font-size: 0.95rem;
+    }
+}
+
+/* MÓVIL (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .contenedor-ejemplo {
+        padding: 20px 10px;
+        min-height: auto;
+    }
+    
+    .contenedor-ejemplo h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        padding-top: 40px;
+    }
+    
+    .ejemplo-contenido {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .sistema-ecuaciones,
+    .iteraciones {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 18px;
+    }
+    
+    .sistema-ecuaciones {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .sistema-ecuaciones h3,
+    .iteraciones h3 {
+        font-size: 1.2rem;
+        padding-bottom: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .ecuaciones {
+        font-size: 1.1rem;
+        gap: 8px;
+    }
+    
+    .tabla-iteraciones {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .tabla-iteraciones table {
+        font-size: 0.85rem;
+        min-width: 100%;
+    }
+    
+    .tabla-iteraciones th,
+    .tabla-iteraciones td {
+        padding: 8px 6px;
+        font-size: 0.85rem;
+    }
+}
+
+/* MÓVIL EXTRA PEQUEÑO (hasta 375px) */
+@media screen and (max-width: 375px) {
+    .contenedor-ejemplo {
+        padding: 15px 8px;
+    }
+    
+    .contenedor-ejemplo h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
+    .sistema-ecuaciones,
+    .iteraciones {
+        padding: 15px;
+    }
+    
+    .sistema-ecuaciones h3,
+    .iteraciones h3 {
+        font-size: 1.1rem;
+        padding-bottom: 15px;
+    }
+    
+    .ecuaciones {
+        font-size: 1rem;
+    }
+    
+    .tabla-iteraciones table {
+        font-size: 0.8rem;
+    }
+    
+    .tabla-iteraciones th,
+    .tabla-iteraciones td {
+        padding: 6px 4px;
+        font-size: 0.8rem;
+    }
+}

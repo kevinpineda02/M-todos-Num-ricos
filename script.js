@@ -987,4 +987,56 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.log('No se encontró el video o el contenedor principal');
     }
+
+    // ============================================
+    // MENÚ HAMBURGUESA - FUNCIONALIDAD
+    // ============================================
+
+    // Obtener elementos
+    const menuToggle = document.getElementById('menuToggle');
+    const navegacion = document.getElementById('navegacion');
+    const navLinks = document.querySelectorAll('.navegacion nav a');
+
+    // Toggle del menú al hacer clic en el botón
+    menuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navegacion.classList.toggle('active');
+        
+        // Prevenir scroll del body cuando el menú está abierto
+        if (navegacion.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            navegacion.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
+
+    // Cerrar menú al hacer clic fuera de él
+    document.addEventListener('click', function(event) {
+        const isClickInsideMenu = navegacion.contains(event.target);
+        const isClickOnToggle = menuToggle.contains(event.target);
+        
+        if (!isClickInsideMenu && !isClickOnToggle && navegacion.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            navegacion.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Cerrar menú al cambiar a vista desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && navegacion.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            navegacion.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
 });
