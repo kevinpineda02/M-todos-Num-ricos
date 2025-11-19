@@ -189,6 +189,215 @@ h1 {
     z-index: 500;
 }
 
+.contenido {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.texto {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding: 25px;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    border-radius: 15px;
+    transform: translateY(50%);
+}   
+
+.imagen {
+    margin-left: auto;
+    padding-right: 10px;
+}
+
+.imagen img {
+    width: 480px;
+    height: auto;
+    border-radius: 20px;
+    flex-shrink: 0;
+    transform: translateY(50%);
+}
+
+/* MEDIA QUERIES PARA RESPONSIVE */
+/* ============================================= */
+/* MEDIA QUERIES PARA CONTENEDOR-SECUNDARIO */
+/* ============================================= */
+
+/* TABLET (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .contenedor-secundario {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1.1rem;
+        padding: 25px;
+        transform: none;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 450px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL GRANDE Y TABLET PEQUEÑA (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .contenedor-secundario {
+        min-height: auto;
+        padding: 30px 15px;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1.1rem;
+        padding: 20px;
+        transform: none;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 380px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .contenedor-secundario {
+        padding: 20px 10px;
+        min-height: auto;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 15px;
+        gap: 15px;
+        transform: none;
+        flex-direction: column;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 15px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL EXTRA PEQUEÑO (hasta 375px) */
+@media screen and (max-width: 375px) {
+    .contenedor-secundario {
+        padding: 15px 8px;
+    }
+    
+    .texto {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+    
+    .imagen img {
+        max-width: 280px;
+    }
+}
+
+/* ============================================= */
+/* ASEGURAR QUE EL ORDEN SEA CORRECTO */
+/* ============================================= */
+
+@media screen and (max-width: 1024px) {
+    .contenido {
+        /* La imagen aparecerá primero, luego el texto */
+        flex-direction: column;
+    }
+    
+    .texto {
+        /* Resetear el transform que tenía en desktop */
+        transform: none !important;
+        order: 2; /* Texto aparece segundo */
+    }
+    
+    .imagen {
+        /* Resetear el transform que tenía en desktop */
+        transform: none !important;
+        order: 1; /* Imagen aparece primero */
+    }
+    
+    .imagen img {
+        /* Resetear el transform de la imagen */
+        transform: none !important;
+    }
+}
+
 .contenedor-secundario::before {
     content: "";
     position: absolute;
@@ -762,7 +971,8 @@ h3{
 
 .ecuacion-input-principal {
     width: 100% !important;
-    min-width: 300px !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
     height: 50px !important;
     text-align: left !important;
     border: 2px solid #4CAF50 !important;
@@ -772,6 +982,7 @@ h3{
     background: white !important;
     color: #333 !important;
     transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
 }
 
 .ecuacion-input-principal:focus {
@@ -947,36 +1158,792 @@ h3{
 
 /* Responsive para los nuevos contenedores */
 @media screen and (max-width: 768px) {
-    .contenido-algoritmo,
-    .ventajas-desventajas,
-    .ejemplo-contenido,
-    .calculadora-contenido,
-    .equipo-contenido {
+/* CALCULADORA - INPUTS RESPONSIVE */
+    .matriz-fila {
         flex-direction: column;
-        gap: 20px;
+        align-items: stretch;
+        padding: 12px;
+        gap: 10px;
     }
     
-    .contenedor-algoritmo h2,
-    .contenedor-ventajas h2,
-    .contenedor-ejemplo h2,
-    .contenedor-calculadora h2,
-    .contenedor-equipo h2 {
-        font-size: 2rem;
+    .matriz-fila span {
+        min-width: auto;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 5px;
+        font-size: 1rem;
     }
     
-    .parametros {
+    .input-sistema,
+    .resultados {
+        width: 100%;
+    }
+    
+    
+    
+    /* ECUACIONES MATEMÁTICAS */
+    .ecuaciones {
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsive para calculadora - Tablets */
+@media screen and (max-width: 1024px) {
+    .calculadora-contenido {
         flex-direction: column;
-        gap: 15px;
+    }
+    
+    .input-sistema,
+    .resultados {
+        width: 100%;
+        max-width: 100%;
     }
     
     .matriz-fila {
-        flex-wrap: wrap;
-        justify-content: center;
+        padding: 10px 5px;
+        gap: 10px;
     }
     
-    .equipo-contenido {
-        max-width: 500px;
+    .ecuacion-input-principal {
+        font-size: 1rem !important;
+        padding: 12px 15px !important;
+    }
+}
+
+/* Responsive para calculadora - Móviles grandes */
+@media screen and (max-width: 768px) {
+    #matriz-container {
+        padding: 15px 10px;
+    }
+    
+    .matriz-fila {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .matriz-fila span {
+        min-width: auto;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+    
+    .ecuacion-input-principal {
+        width: 100% !important;
+        font-size: 0.95rem !important;
+        padding: 10px 12px !important;
+        height: auto !important;
+        min-height: 45px;
+    }
+    
+    .contenedor-calculadora h2 {
+        font-size: 2rem;
+        padding: 0 10px;
+    }
+}
+
+/* Responsive para calculadora - Móviles pequeños */
+@media screen and (max-width: 480px) {
+    /* CALCULADORA - AJUSTES ADICIONALES */
+    .contenedor-calculadora h2 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+    
+    .matriz-fila {
+        padding: 10px;
+        margin-bottom: 12px;
+    }
+    
+    .matriz-fila span {
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+    
+    #matriz-container {
+        padding: 12px 8px;
+    }
+    
+    .ecuacion-input-principal {
+        height: auto !important;
+        min-height: 45px !important;
+        line-height: 1.4;
+    }
+    
+    /* PARÁMETROS EN COLUMNA */
+    .parametro {
+        width: 100%;
+    }
+    
+    .parametro input {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .btn-calcular {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    
+    /* AJUSTE DE LISTAS */
+    .pasos ol,
+    .ventajas ul,
+    .desventajas ul {
+        font-size: 0.95rem;
+        padding-left: 15px;
+    }
+}
+
+/* Responsive para móviles muy pequeños */
+@media screen and (max-width: 360px) {
+    .ecuacion-input-principal {
+        font-size: 0.85rem !important;
+        padding: 8px !important;
+    }
+    
+    .matriz-fila span {
+        font-size: 0.9rem;
     }
 }
 
 
+/* ============================================= */
+/* === MEDIA QUERIES ADICIONALES ESPECÍFICAS == */
+/* ============================================= */
+
+/* TABLET LANDSCAPE (1024px - 1200px) */
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+    .calculadora-contenido {
+        max-width: 95%;
+    }
+    
+    .ecuacion-input-principal {
+        font-size: 1rem !important;
+    }
+}
+
+/* MÓVIL MEDIO (481px - 640px) */
+@media screen and (min-width: 481px) and (max-width: 640px) {
+    .ecuacion-input-principal {
+        font-size: 1rem !important;
+        padding: 12px 15px !important;
+    }
+    
+    .matriz-fila span {
+        font-size: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.7rem;
+    }
+}
+
+/* MÓVIL EXTRA PEQUEÑO - AJUSTES CALCULADORA */
+@media screen and (max-width: 375px) {
+    .ecuacion-input-principal {
+        font-size: 0.85rem !important;
+        padding: 8px 10px !important;
+        height: auto !important;
+        min-height: 40px !important;
+    }
+    
+    .matriz-fila span {
+        font-size: 0.85rem;
+    }
+    
+    #matriz-container {
+        padding: 10px 5px;
+    }
+    
+    .btn-calcular {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+}
+
+/* AJUSTE ESPECÍFICO PARA SECCIÓN ALGORITMO */
+@media screen and (max-width: 1100px) {
+    .contenido-algoritmo {
+        flex-direction: column !important;
+        align-items: center;
+    }
+    
+    .pasos,
+    .formula-jacobi {
+        width: 100%;
+        max-width: 800px;
+    }
+}
+
+/* AJUSTES PARA OVERFLOW HORIZONTAL */
+@media screen and (max-width: 768px) {
+    body, html {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    
+    .matriz-fila,
+    .ecuacion-input-principal,
+    #matriz-container,
+    .input-sistema,
+    .resultados {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* ASEGURAR QUE NADA SE DESBORDE */
+    * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* EXCEPCIONES PARA ELEMENTOS QUE NECESITAN FLEX */
+    .encabezado,
+    .contenedor-principal,
+    .titulo,
+    .contenido {
+        max-width: 100vw;
+    }
+}
+
+/* LANDSCAPE MÓVIL - CALCULADORA */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .contenedor-calculadora {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .calculadora-contenido {
+        flex-direction: row;
+        gap: 20px;
+    }
+    
+    .ecuacion-input-principal {
+        height: 45px !important;
+    }
+}
+
+/* FIX PARA SCROLL HORIZONTAL */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* TABLET (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    /* AGREGAR ESTO: */
+    .contenido-algoritmo {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .pasos,
+    .formula-jacobi {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .ventajas-desventajas,
+    .ejemplo-contenido {
+        gap: 30px;
+    }
+    
+    .calculadora-contenido {
+        flex-direction: column;
+    }
+}
+
+/* ============================================= */
+/* MEDIA QUERIES PARA CONTENEDOR-SECUNDARIO */
+/* ============================================= */
+
+/* TABLET (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .contenedor-secundario {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1.1rem;
+        padding: 25px;
+        transform: none;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 450px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL GRANDE Y TABLET PEQUEÑA (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .contenedor-secundario {
+        min-height: auto;
+        padding: 30px 15px;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1.1rem;
+        padding: 20px;
+        transform: none;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 380px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .contenedor-secundario {
+        padding: 20px 10px;
+        min-height: auto;
+    }
+    
+    .contenido {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        transform: none;
+    }
+    
+    .texto {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 15px;
+        gap: 15px;
+        transform: none;
+        flex-direction: column;
+    }
+    
+    .imagen {
+        margin-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .imagen img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 15px;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* MÓVIL EXTRA PEQUEÑO (hasta 375px) */
+@media screen and (max-width: 375px) {
+    .contenedor-secundario {
+        padding: 15px 8px;
+    }
+    
+    .texto {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+    
+    .imagen img {
+        max-width: 280px;
+    }
+}
+
+/* ============================================= */
+/* ASEGURAR QUE EL ORDEN SEA CORRECTO */
+/* ============================================= */
+
+@media screen and (max-width: 1024px) {
+    .contenido {
+        /* La imagen aparecerá primero, luego el texto */
+        flex-direction: column;
+    }
+    
+    .texto {
+        /* Resetear el transform que tenía en desktop */
+        transform: none !important;
+        order: 2; /* Texto aparece segundo */
+    }
+    
+    .imagen {
+        /* Resetear el transform que tenía en desktop */
+        transform: none !important;
+        order: 1; /* Imagen aparece primero */
+    }
+    
+    .imagen img {
+        /* Resetear el transform de la imagen */
+        transform: none !important;
+    }
+}
+
+/* ============================================= */
+/* MEDIA QUERIES PARA CONTENEDOR-VENTAJAS */
+/* ============================================= */
+
+/* TABLET (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .contenedor-ventajas {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .ventajas-desventajas {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .ventajas, .desventajas {
+        width: 100%;
+        max-width: 600px;
+        min-height: auto;
+        padding: 25px;
+    }
+}
+
+/* MÓVIL GRANDE Y TABLET PEQUEÑA (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .contenedor-ventajas {
+        min-height: auto;
+        padding: 30px 15px;
+    }
+    
+    .contenedor-ventajas h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .ventajas-desventajas {
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+    }
+    
+    .ventajas, .desventajas {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+    
+    .ventajas h3, .desventajas h3 {
+        font-size: 1.3rem;
+    }
+    
+    .ventajas ul, .desventajas ul {
+        font-size: 1rem;
+    }
+}
+
+/* MÓVIL (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .contenedor-ventajas {
+        padding: 20px 10px;
+        min-height: auto;
+    }
+    
+    .contenedor-ventajas h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        padding-top: 40px;
+    }
+    
+    .ventajas-desventajas {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .ventajas, .desventajas {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 18px;
+    }
+    
+    .ventajas h3, .desventajas h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .ventajas ul, .desventajas ul {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .ventajas li, .desventajas li {
+        margin-bottom: 8px;
+        padding-left: 18px;
+    }
+}
+
+/* MÓVIL EXTRA PEQUEÑO (hasta 375px) */
+@media screen and (max-width: 375px) {
+    .contenedor-ventajas {
+        padding: 15px 8px;
+    }
+    
+    .contenedor-ventajas h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
+    .ventajas, .desventajas {
+        padding: 15px;
+    }
+    
+    .ventajas h3, .desventajas h3 {
+        font-size: 1.1rem;
+    }
+    
+    .ventajas ul, .desventajas ul {
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================= */
+/* MEDIA QUERIES PARA CONTENEDOR-EJEMPLO */
+/* ============================================= */
+
+/* TABLET (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .contenedor-ejemplo {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .ejemplo-contenido {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .sistema-ecuaciones,
+    .iteraciones {
+        width: 100%;
+        max-width: 700px;
+        min-height: auto;
+        padding: 25px;
+    }
+    
+    .sistema-ecuaciones {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    
+    .sistema-ecuaciones h3,
+    .iteraciones h3 {
+        font-size: 1.5rem;
+        padding-bottom: 20px;
+    }
+}
+
+/* MÓVIL GRANDE Y TABLET PEQUEÑA (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .contenedor-ejemplo {
+        min-height: auto;
+        padding: 30px 15px;
+    }
+    
+    .contenedor-ejemplo h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .ejemplo-contenido {
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+    }
+    
+    .sistema-ecuaciones,
+    .iteraciones {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+    
+    .sistema-ecuaciones {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .sistema-ecuaciones h3,
+    .iteraciones h3 {
+        font-size: 1.4rem;
+        padding-bottom: 25px;
+    }
+    
+    .ecuaciones {
+        font-size: 1.3rem;
+    }
+    
+    .tabla-iteraciones {
+        overflow-x: auto;
+    }
+    
+    .tabla-iteraciones table {
+        font-size: 0.95rem;
+    }
+}
+
+/* MÓVIL (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .contenedor-ejemplo {
+        padding: 20px 10px;
+        min-height: auto;
+    }
+    
+    .contenedor-ejemplo h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        padding-top: 40px;
+    }
+    
+    .ejemplo-contenido {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .sistema-ecuaciones,
+    .iteraciones {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 18px;
+    }
+    
+    .sistema-ecuaciones {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .sistema-ecuaciones h3,
+    .iteraciones h3 {
+        font-size: 1.2rem;
+        padding-bottom: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .ecuaciones {
+        font-size: 1.1rem;
+        gap: 8px;
+    }
+    
+    .tabla-iteraciones {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .tabla-iteraciones table {
+        font-size: 0.85rem;
+        min-width: 100%;
+    }
+    
+    .tabla-iteraciones th,
+    .tabla-iteraciones td {
+        padding: 8px 6px;
+        font-size: 0.85rem;
+    }
+}
+
+/* MÓVIL EXTRA PEQUEÑO (hasta 375px) */
+@media screen and (max-width: 375px) {
+    .contenedor-ejemplo {
+        padding: 15px 8px;
+    }
+    
+    .contenedor-ejemplo h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
+    .sistema-ecuaciones,
+    .iteraciones {
+        padding: 15px;
+    }
+    
+    .sistema-ecuaciones h3,
+    .iteraciones h3 {
+        font-size: 1.1rem;
+        padding-bottom: 15px;
+    }
+    
+    .ecuaciones {
+        font-size: 1rem;
+    }
+    
+    .tabla-iteraciones table {
+        font-size: 0.8rem;
+    }
+    
+    .tabla-iteraciones th,
+    .tabla-iteraciones td {
+        padding: 6px 4px;
+        font-size: 0.8rem;
+    }
+}
